@@ -1,50 +1,27 @@
-const readline = require('readline');
+const readline = require("readline");
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  input: process.stdin,
+  output: process.stdout,
+});
 
 class ORM {
-    constructor() {
-        throw new Error("Classe ORM não pode ser instanciada diretamente!");
-    }
+  constructor() {
+    throw new Error("Classe ORM não pode ser instanciada diretamente!");
+  }
 
-    menu() {
+  static criar() {}
 
-        do{
-            let opcao = 
-            console.log("");
-        } while(opcao !== 5);
-        
-    }
+  static atualizar() {}
 
-    static criar(){
+  static remover() {}
 
-    }
-
-    static atualizar() {
-
-    }
-
-    static remover() {
-
-    }
-
-    static buscar() {
-
-    }
-
+  static buscar() {}
+}
+class Pessoa extends ORM {
+  constructor() {}
 }
 
-class Pessoa extends ORM{
-    constructor() {
-        
-    }
-}
-
-class Animal extends ORM{
-    constructor() {
-        
-    }
+class Animal extends ORM {
+  constructor() {}
 }
