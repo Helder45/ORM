@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
 class ORM {
     constructor() {
         throw new Error("Classe ORM não pode ser instanciada diretamente!");
@@ -6,8 +13,9 @@ class ORM {
     menu() {
 
         do{
+            let opcao = 
             console.log("");
-        }
+        } while(opcao !== 5);
         
     }
 
