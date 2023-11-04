@@ -1,16 +1,12 @@
-const readline = require("readline");
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 class ORM {
   constructor() {
+    
     throw new Error("Classe ORM não pode ser instanciada diretamente!");
   }
 
-  static criar() {}
+  static criar() {
+
+  }
 
   static atualizar() {}
 
