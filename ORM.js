@@ -1,5 +1,5 @@
 import chalk from "../node_modules/chalk/source/index.js";
-import { ClasseORM } from "../classes/ErroPesonalizado.js";
+import { ClasseORM, ErroArrayVazio } from "../classes/ErroPesonalizado.js";
 
 class ORM {
   constructor() {
@@ -15,9 +15,7 @@ class ORM {
     this.arr.push(objeto);
   }
 
-  static atualizar() {
-
-  }
+  static atualizar() {}
 
   static remover(tipoRequisitado, idRequisitado) {
     const idCorreto = (idRequisitado -= idRequisitado);
@@ -32,7 +30,7 @@ class ORM {
 
   static buscar() {
     if (this.arr === undefined || this.arr === null || this.arr.length === 0) {
-      console.error(chalk.red("Array vazio! Nada para mostrar aqui!"));
+      throw new ErroArrayVazio(chalk.red("Array vazio! Nada para mostrar aqui!"));
     } else {
       console.table(this.arr);
     }
