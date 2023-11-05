@@ -17,10 +17,15 @@ class ORM {
 
   static atualizar() {}
 
-  static remover(tipoRequisitado) {
-    this.arr.forEach(function (item, indice) {
+  static remover(tipoRequisitado, idRequisitado) {
+    const idCorreto = idRequisitado -= idRequisitado;
+    this.arr.forEach(function (item, indice, array) {
       if (item['tipo'] === tipoRequisitado) {
-        console.log(chalk.green("Deu certo!", item['nome']));
+        if (indice === idCorreto) {
+          // console.log(chalk.green("Deu certo!", item['nome']));
+          const itemRemovido = array.splice(indice, 1);
+          // console.log(chalk.green("Item removido com sucesso!", itemRemovido));
+        } 
       }
     });
   }
