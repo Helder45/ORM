@@ -4,8 +4,9 @@ class ORM {
     throw new Error("Classe ORM não pode ser instanciada diretamente!");
   }
 
-  static criar() {
-
+  static criar(...itens) {
+    this.arr.push(...itens); //this referencia a classe estudante
+    console.log(this.arr);
   }
 
   static atualizar() {}
@@ -14,10 +15,18 @@ class ORM {
 
   static buscar() {}
 }
+
+
+class Estudante extends ORM {
+  static arr = [];
+}
+
 class Pessoa extends ORM {
-  constructor() {}
+  static arr = [];
 }
 
 class Animal extends ORM {
-  constructor() {}
+  static arr = [];
 }
+
+Estudante.criar( {nome: 'Helder', idade: 19}, {nome: 'Junior', idade: 20, deficiente: 'sim'});
