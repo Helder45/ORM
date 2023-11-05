@@ -1,10 +1,10 @@
-import chalk from '../node_modules/chalk';
-import {ErroClasseORM} from '../classes/ErroPesonalizado.js';
+import chalk from '../node_modules/chalk/source/index.js';
+import {ClasseORM} from '../classes/ErroPesonalizado.js';
 
 class ORM {
   constructor() {
     if(this.constructor === ORM) {
-      throw new ErroClasseORM(chalk.red("Classe ORM não pode ser instanciada diretamente!"));
+      throw new ClasseORM(chalk.red("Classe ORM não pode ser instanciada diretamente!"));
     }
     
   }
