@@ -1,10 +1,10 @@
-const chalk = require('chalk');
+import chalk from '../node_modules/chalk';
 const ErroClasseORM = require('../classes/ErroPesonalizado');
 
 class ORM {
   constructor() {
     if(this.constructor === ORM) {
-      throw new Error("Classe ORM não pode ser instanciada diretamente!");
+      throw new Error(chalk.red("Classe ORM não pode ser instanciada diretamente!"));
     }
     
   }
