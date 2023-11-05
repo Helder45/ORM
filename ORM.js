@@ -1,5 +1,5 @@
 import chalk from "../node_modules/chalk/source/index.js";
-import { ClasseORM, ErroArrayVazio, ErroObjetoInvalido } from "../classes/ErroPesonalizado.js";
+import { ClasseORM, ErroArrayVazio, ErroObjetoInvalido, ErroObjetoNaoDefinido } from "../classes/ErroPesonalizado.js";
 
 class ORM {
   constructor() {
@@ -11,8 +11,15 @@ class ORM {
   }
 
   static criar(itens) {
-    if (itens === null || typeof(itens) !== 'object'){
-      throw new ErroObjetoInvalido();
+    if(itens === null || itens === undefined) {
+      throw new ErroObjetoNaoDefinido(
+        chalk.red("Objeto não definido")
+      );
+    }
+    if (typeof(itens) !== 'object'){
+      throw new ErroObjetoInvalido(
+        chalk.red("Objeto Inválido!")
+      );
     }
     const objeto = { tipo: this.tipoClasse, ...itens };
     this.arr.push(objeto);
@@ -21,10 +28,10 @@ class ORM {
   static atualizar() {}
 
   static remover(tipoRequisitado, idRequisitado) {
-    const idCorreto = (idRequisitado -= idRequisitado);
+    const indiceCorrespondente = (idRequisitado -= 1);
     this.arr.forEach(function (item, indice, array) {
       if (item["tipo"] === tipoRequisitado) {
-        if (indice === idCorreto) {
+        if (indice === indiceCorrespondente) {
           array.splice(indice, 1);
         }
       }
