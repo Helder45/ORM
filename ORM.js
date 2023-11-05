@@ -1,5 +1,5 @@
 import chalk from '../node_modules/chalk';
-const ErroClasseORM = require('../classes/ErroPesonalizado');
+import ErroClasseORM from '../classes/ErroPesonalizado.js';
 
 class ORM {
   constructor() {
@@ -22,18 +22,3 @@ class ORM {
 
   static buscar() {}
 }
-
-
-class Estudante extends ORM {
-  static arr = [];
-}
-
-class Pessoa extends ORM {
-  static arr = [];
-}
-
-class Animal extends ORM {
-  static arr = [];
-}
-
-Estudante.criar( {nome: 'Helder', idade: 19}, {nome: 'Junior', idade: 20, deficiente: 'sim'});
