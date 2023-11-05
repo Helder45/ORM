@@ -11,7 +11,9 @@ class ORM {
 
   static atualizar() {}
 
-  static remover() {}
+  static remover() {
+    
+  }
 
   static buscar() {}
 }
