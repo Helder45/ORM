@@ -9,10 +9,11 @@ class ORM {
     
   }
 
-  static criar(itensObjeto) {
-    const objetoComTipo = {...itensObjeto};
-    this.arr.push(objetoComTipo); //this referencia a classe estudante
-    console.log(this.arr);
+  static criar(objetoArr) {
+
+    // const objeto = {tipo: this.tipoClasse, objetoArr};
+    this.arr.push(objetoArr); //this referencia a classe estudante
+    console.table(this.arr);
   }
 
   static atualizar() {}
@@ -21,7 +22,9 @@ class ORM {
 
   }
 
-  static buscar() {}
+  static buscar() {
+    console.log(this.arr[0]['0']);
+  }
 }
 
 export {ORM};
