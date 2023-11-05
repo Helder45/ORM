@@ -1,7 +1,12 @@
+const chalk = require('chalk');
+const ErroClasseORM = require('../classes/ErroPesonalizado');
+
 class ORM {
   constructor() {
+    if(this.constructor === ORM) {
+      throw new Error("Classe ORM não pode ser instanciada diretamente!");
+    }
     
-    throw new Error("Classe ORM não pode ser instanciada diretamente!");
   }
 
   static criar(...itens) {
@@ -12,7 +17,7 @@ class ORM {
   static atualizar() {}
 
   static remover() {
-    
+
   }
 
   static buscar() {}
