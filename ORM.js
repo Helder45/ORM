@@ -1,5 +1,5 @@
 import chalk from "../node_modules/chalk/source/index.js";
-import { ClasseORM, ErroArrayVazio } from "../classes/ErroPesonalizado.js";
+import { ClasseORM, ErroArrayVazio, ErroObjetoInvalido } from "../classes/ErroPesonalizado.js";
 
 class ORM {
   constructor() {
@@ -11,6 +11,9 @@ class ORM {
   }
 
   static criar(itens) {
+    if (itens === null || typeof(itens) !== 'object'){
+      throw new ErroObjetoInvalido();
+    }
     const objeto = { tipo: this.tipoClasse, ...itens };
     this.arr.push(objeto);
   }
