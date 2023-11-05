@@ -12,7 +12,7 @@ class ORM {
 
   static criar(itens) {
     const objeto = { tipo: this.tipoClasse, ...itens };
-    this.arr.push(objeto); //this referencia a classe estudante
+    this.arr.push(objeto);
   }
 
   static atualizar() {
@@ -24,7 +24,6 @@ class ORM {
     this.arr.forEach(function (item, indice, array) {
       if (item["tipo"] === tipoRequisitado) {
         if (indice === idCorreto) {
-          // console.log(chalk.green("Deu certo!", item['nome']));
           array.splice(indice, 1);
         }
       }
