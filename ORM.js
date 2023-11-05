@@ -9,10 +9,10 @@ class ORM {
     
   }
 
-  static criar(objetoArr) {
+  static criar(itens) {
 
-    // const objeto = {tipo: this.tipoClasse, objetoArr};
-    this.arr.push(objetoArr); //this referencia a classe estudante
+    const objeto = {tipo: this.tipoClasse, itens};
+    this.arr.push(objeto); //this referencia a classe estudante
     console.table(this.arr);
   }
 
