@@ -4,7 +4,7 @@ const ErroClasseORM = require('../classes/ErroPesonalizado');
 class ORM {
   constructor() {
     if(this.constructor === ORM) {
-      throw new Error(chalk.red("Classe ORM não pode ser instanciada diretamente!"));
+      throw new ErroClasseORM(chalk.red("Classe ORM não pode ser instanciada diretamente!"));
     }
     
   }
