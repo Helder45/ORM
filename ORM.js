@@ -11,19 +11,22 @@ class ORM {
 
   static criar(itens) {
 
-    const objeto = {tipo: this.tipoClasse, itens};
+    const objeto = {tipo: this.tipoClasse, ...itens};
     this.arr.push(objeto); //this referencia a classe estudante
-    console.table(this.arr);
   }
 
   static atualizar() {}
 
-  static remover() {
-
+  static remover(tipoRequisitado) {
+    this.arr.forEach(function (item, indice) {
+      if (item['tipo'] === tipoRequisitado) {
+        console.log(chalk.green("Deu certo!", item['nome']));
+      }
+    });
   }
 
   static buscar() {
-    console.log(this.arr[0]['0']);
+    console.table(this.arr);
   }
 }
 
