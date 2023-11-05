@@ -1,5 +1,5 @@
 import chalk from '../node_modules/chalk';
-import ErroClasseORM from '../classes/ErroPesonalizado.js';
+import {ErroClasseORM} from '../classes/ErroPesonalizado.js';
 
 class ORM {
   constructor() {
@@ -22,3 +22,5 @@ class ORM {
 
   static buscar() {}
 }
+
+export {ORM};
