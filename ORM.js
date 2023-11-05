@@ -15,7 +15,9 @@ class ORM {
     this.arr.push(objeto); //this referencia a classe estudante
   }
 
-  static atualizar() {}
+  static atualizar() {
+
+  }
 
   static remover(tipoRequisitado, idRequisitado) {
     const idCorreto = (idRequisitado -= idRequisitado);
@@ -24,7 +26,6 @@ class ORM {
         if (indice === idCorreto) {
           // console.log(chalk.green("Deu certo!", item['nome']));
           array.splice(indice, 1);
-          // console.log(chalk.green("Item removido com sucesso!", itemRemovido));
         }
       }
     });
