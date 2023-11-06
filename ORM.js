@@ -31,25 +31,24 @@ class ORM {
   static atualizar() {}
 
   static remover(tipoRequisitado, idRequisitado) {
-    const indiceCorrespondente = parseInt(idRequisitado) - 1;
+    const indiceCorrespondente = idRequisitado - 1;
+    const itemObjeto = this.arr.find(element => element.tipo === tipoRequisitado && indiceCorrespondente === this.arr.indexOf(element));
 
-    try {
-      this.arr.forEach(function (item, indice, array) {
-        if (item["tipo"] === tipoRequisitado) {
-          if (indiceCorrespondente in array) {
-            array.splice(indice, 1);
-          } else {
-            throw new ErroIndiceInexistente("Índice não encontrado!");
-          }
-        } else {
-          throw new ErroTipoInexistente(
-            "Tipo informado inexistente! Não foi possível realizar a remoção."
-          );
-        }
-      });
-    } catch (error) {
-      console.error(chalk.red(error.stack));
-    }
+    this.arr.splice(this.arr.indexOf(itemObjeto), 1);
+
+    // this.arr.forEach(function (item, indice, array) {
+    //   console.log(array.indexOf(JSON.stringify(item)));
+    //   if (item["tipo"] === tipoRequisitado && indiceCorrespondente in ) {
+    //     array.splice(indice, 1);
+    //   } else {
+    //     throw (
+    //       new ErroIndiceInexistente(chalk.red("Índice não encontrado!")) ||
+    //       new ErroTipoInexistente(
+    //         "Tipo informado inexistente! Não foi possível realizar a remoção."
+    //       )
+    //     );
+    //   }
+    // });
   }
 
   static buscar() {
