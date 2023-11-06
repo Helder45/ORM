@@ -27,7 +27,32 @@ class ORM {
     this.arr.push(objeto);
   }
 
-  static atualizar() {}
+  static atualizar(tipoRequisitado, idRequisitado, objetoNovo) {
+    if (this.arr === undefined || this.arr === null || this.arr.length === 0) {
+      throw new ErroArrayVazio(
+        chalk.red("Array vazio! Nada para mostrar aqui!")
+      );
+    }
+
+    const indiceCorrespondente = idRequisitado - 1;
+
+    const itemObjeto = this.arr.find((item) => {
+      if (
+        item.tipo === tipoRequisitado &&
+        indiceCorrespondente === this.arr.indexOf(item)
+      ) {
+        return item;
+      }
+    });
+
+    if (itemObjeto === undefined || itemObjeto === null){
+      throw new ErroObjetoInexistente(chalk.red("Objeto Inexistente!"));
+    }
+
+    const objeto = { tipo: this.tipoClasse, ...objetoNovo };
+    const indiceItemObjeto = this.arr.indexOf(itemObjeto);
+    this.arr[indiceItemObjeto] = objeto;
+  }
 
   static remover(tipoRequisitado, idRequisitado) {
     if (this.arr === undefined || this.arr === null || this.arr.length === 0) {
