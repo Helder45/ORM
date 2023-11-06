@@ -1,5 +1,5 @@
 import chalk from "../node_modules/chalk/source/index.js";
-import { ClasseORM, ErroArrayVazio, ErroObjetoInvalido, ErroObjetoNaoDefinido } from "../classes/ErroPesonalizado.js";
+import { ClasseORM, ErroArrayVazio, ErroObjetoInvalido, ErroObjetoNaoDefinido, ErroTipoInexistente, ErroIndiceInexistente } from "../classes/ErroPesonalizado.js";
 
 class ORM {
   constructor() {
@@ -28,7 +28,20 @@ class ORM {
   static atualizar() {}
 
   static remover(tipoRequisitado, idRequisitado) {
-    const indiceCorrespondente = (idRequisitado -= 1);
+    const indiceCorrespondente = parseInt(idRequisitado) - 1;
+    let i = 0;
+    while (i < this.arr.length) {
+      if (this.arr[i]["tipo"] !== tipoRequisitado){
+        throw new ErroTipoInexistente(chalk.red("Tipo informado inexistente!"));
+      }
+
+      console.log(this.arr.length);
+      if (i !== indiceCorrespondente){
+        throw new ErroIndiceInexistente(chalk.red("Índice não encontrado!"));
+      }
+      i++;
+    }
+
     this.arr.forEach(function (item, indice, array) {
       if (item["tipo"] === tipoRequisitado) {
         if (indice === indiceCorrespondente) {
