@@ -35,8 +35,7 @@ class ORM {
         throw new ErroTipoInexistente(chalk.red("Tipo informado inexistente!"));
       }
 
-      console.log(this.arr.length);
-      if (i !== indiceCorrespondente){
+      if (!(indiceCorrespondente in this.arr)){
         throw new ErroIndiceInexistente(chalk.red("Índice não encontrado!"));
       }
       i++;
