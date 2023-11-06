@@ -4,8 +4,7 @@ import {
   ErroArrayVazio,
   ErroObjetoInvalido,
   ErroObjetoNaoDefinido,
-  ErroTipoInexistente,
-  ErroIndiceInexistente,
+  ErroObjetoInexistente
 } from "../classes/ErroPesonalizado.js";
 
 class ORM {
@@ -31,24 +30,28 @@ class ORM {
   static atualizar() {}
 
   static remover(tipoRequisitado, idRequisitado) {
+    if (this.arr === undefined || this.arr === null || this.arr.length === 0) {
+      throw new ErroArrayVazio(
+        chalk.red("Array vazio! Nada para mostrar aqui!")
+      );
+    }
+
     const indiceCorrespondente = idRequisitado - 1;
-    const itemObjeto = this.arr.find(element => element.tipo === tipoRequisitado && indiceCorrespondente === this.arr.indexOf(element));
+
+    const itemObjeto = this.arr.find((item) => {
+      if (
+        item.tipo === tipoRequisitado &&
+        indiceCorrespondente === this.arr.indexOf(item)
+      ) {
+        return item;
+      }
+    });
+
+    if (itemObjeto === undefined || itemObjeto === null){
+      throw new ErroObjetoInexistente(chalk.red("Objeto Inexistente!"));
+    }
 
     this.arr.splice(this.arr.indexOf(itemObjeto), 1);
-
-    // this.arr.forEach(function (item, indice, array) {
-    //   console.log(array.indexOf(JSON.stringify(item)));
-    //   if (item["tipo"] === tipoRequisitado && indiceCorrespondente in ) {
-    //     array.splice(indice, 1);
-    //   } else {
-    //     throw (
-    //       new ErroIndiceInexistente(chalk.red("Índice não encontrado!")) ||
-    //       new ErroTipoInexistente(
-    //         "Tipo informado inexistente! Não foi possível realizar a remoção."
-    //       )
-    //     );
-    //   }
-    // });
   }
 
   static buscar() {
