@@ -1,3 +1,3 @@
 # ORM
 
-## Atividade realizada para a materia de Linguagem de Programação I
+## Atividade realizada para a disciplina de Linguagem de Programação I
